@@ -23,7 +23,8 @@ Test Case 4: Submit the form after filling all details properly by using XPath o
 
 Test Case 5: Verify DB entry after submitting the form using JDBC connection.
 
-Test Case 6: Verify E-mail is triggered or not after submitting the form using assertion on DB considering an email trigger column as email_sent.
+Test Case 6: Verify E-mail is triggered or not after submitting the form using assertion on
+DB considering an email trigger column as email_sent.
 
      */
 
@@ -40,7 +41,7 @@ public void setup()
 public void submitWithoutFillingAllDetails()
 {
 
-    System.out.println("Inside First Test");
+    System.out.println("Inside First Test1");
     System.out.println("Total Number of required fields is: ===> "+sourceFusePage.getAllRequiredFields());
     sourceFusePage.clickOnSubmit();
 
@@ -49,7 +50,8 @@ public void submitWithoutFillingAllDetails()
     public void verifyAllInputsUsingSoftAsserstion()
     {
         System.out.println("Inside First Test2");
-
+//        softAssert.assertEquals(sourceFusePage.enterFirstName("asa"));
+        // User assertAll at the end !!!
     }
 
     @Test
@@ -59,15 +61,12 @@ public void submitWithoutFillingAllDetails()
     }
 
     @Test
-    public void submitFormUsingXpath()
+    public void submitFormByUsingXpath()
     {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         sourceFusePage.fillEntireForm();
         sourceFusePage.clickOnChooseFile();
+        sourceFusePage.chooseYesRadio();
+        sourceFusePage.clickOnSubmit();
     }
 
     @Test

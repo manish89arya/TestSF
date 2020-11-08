@@ -2,9 +2,7 @@ package pages;
 
 import base.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import util.HelperActions;
@@ -14,10 +12,7 @@ import java.util.List;
 public class SourceFusePage extends TestBase
 {
 
-//    @FindBy(xpath = "//div[@id='fnameInput']")
-//    private WebElement txtFldFirstName;
-
-    @FindBy(xpath = "//div[@id='fnameInput']")
+    @FindBy(xpath = "//div[@id='fnameInput']//input[@type='text']")
     private WebElement txtFldFirstName;
 
     @FindBy(xpath = "//div[@id='lnameInput']")
@@ -50,7 +45,7 @@ public class SourceFusePage extends TestBase
     @FindBy(xpath = "//div[@id='addressInput']")
     private WebElement txtAreaAddress;
 
-    @FindBy(xpath = "//div[@id='resumeInput']")
+    @FindBy(xpath = "//input[@id='resume']")
     private WebElement btnChooseFile;
 
     @FindBy(xpath = "//input[@type='radio' and @id='yes']")
@@ -63,57 +58,53 @@ public class SourceFusePage extends TestBase
     private WebElement btnSubmit;
 
 
-
-
     public SourceFusePage() {
         PageFactory.initElements(driver, this);
     }
 
     public void enterFirstName(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldFirstName, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldFirstName, textInput);
     }
 
     public void enterLastName(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldLastName, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldLastName, textInput);
     }
 
     public void enterEmail(String textInput) {
-        HelperActions.waitForVisibility(txtFldEmail);
-        HelperActions.enterTextInAnInputField(txtFldEmail, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldEmail, textInput);
     }
 
     public void enterCurrentCompany(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldCurrentCompany, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldCurrentCompany, textInput);
     }
 
     public void enterMobileNumber(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldMobile, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldMobile, textInput);
     }
     public void enterDOB(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldDOB, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldDOB, textInput);
     }
 
     public void enterJobPosition(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldPosition, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldPosition, textInput);
     }
     public void enterWebsite(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldWebsite, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldWebsite, textInput);
     }
 
     public void enterSalaryRequirements(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldSalary, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldSalary, textInput);
     }
 
     public void enterStartDate(String textInput) {
-        HelperActions.enterTextInAnInputField(txtFldWhenCanYouStart, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtFldWhenCanYouStart, textInput);
     }
     public void enterAddress(String textInput) {
-        HelperActions.enterTextInAnInputField(txtAreaAddress, textInput);
+        HelperActions.enterTextInAnInputFieldUsingActionClass(txtAreaAddress, textInput);
     }
 
     public void fillEntireForm()
     {
-
         enterFirstName("Test First Name");
         enterLastName("Test Last Name");
         enterEmail("test@yopmail.com");
@@ -129,12 +120,13 @@ public class SourceFusePage extends TestBase
 
     public void clickOnSubmit()
     {
+        System.out.println("Inside ClickOnSubmit button");
         btnSubmit.click();
     }
 
     public void clickOnChooseFile()
     {
-        btnChooseFile.click();
+        btnChooseFile.sendKeys(System.getProperty("user.dir")+"\\src\\main\\resources\\testpdf.pdf");
     }
 
     public  void chooseYesRadio()

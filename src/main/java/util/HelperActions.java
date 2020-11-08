@@ -1,28 +1,26 @@
 package util;
 
 import base.TestBase;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
 
 public class HelperActions extends TestBase {
 
-    public static void enterTextInAnInputField(WebElement element, String inputText)
+    public static void enterTextInAnInputFieldUsingActionClass(WebElement element, String inputText)
     {
-        HelperActions.waitForVisibility(element);
-        element.sendKeys(inputText);
+        Actions actions = new Actions(driver);
+        actions.sendKeys(element,inputText).build().perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Actual Entered Value in " +element.getAttribute("id")+" is ======>>>>>"+ element.getAttribute("value"));
     }
 
-    public static void waitForVisibility(WebElement element)
+    public static void uploadFile()
     {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(element));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-//        JavascriptExecutor jse = (JavascriptExec+utor)driver;
-//        jse.executeScript("document.getElementById('fnameInput').setAttribute('disabled', 'false')");
-    }
 
+    }
 
 }

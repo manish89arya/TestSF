@@ -3,6 +3,8 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import util.SFConstants;
+
+import java.net.UnknownHostException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -38,5 +40,6 @@ public class TestBase {
     public static void authenticationPopUpLogin()
     {
         driver.get("http://sfwebhtml:t63KUfxL5vUyFLG4eqZNUcuRQ@sfwebhtml.sourcefuse.com/automation-form-demo-for-interview/");
+        driver.manage().timeouts().implicitlyWait(SFConstants.IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
 }
