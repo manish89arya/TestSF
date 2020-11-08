@@ -126,12 +126,14 @@ public class SourceFusePage extends TestBase
 
     public void clickOnChooseFile()
     {
-        btnChooseFile.sendKeys(System.getProperty("user.dir")+"\\src\\main\\resources\\testpdf.pdf");
+        btnChooseFile.sendKeys(HelperActions.uploadFile());
+        System.out.println("Inside clickOnChooseFile method");
     }
 
     public  void chooseYesRadio()
     {
         relocateYes.click();
+        System.out.println("Inside chooseYesRadio method");
     }
 
     public int getAllRequiredFields() {
