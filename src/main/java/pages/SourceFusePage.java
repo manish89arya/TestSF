@@ -70,7 +70,6 @@ public class SourceFusePage extends TestBase
     }
 
     public void enterFirstName(String textInput) {
-//        HelperActions.waitForVisibility(txtFldFirstName);
         HelperActions.enterTextInAnInputField(txtFldFirstName, textInput);
     }
 
